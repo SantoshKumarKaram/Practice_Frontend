@@ -12,6 +12,8 @@ import Mcq from "./Quesbankpractice/Mcq";
 import ListMcq from "./Quesbankpractice/ListMcq";
 import SingIn from "./Common/SingIn";
 import SignUp from "./Common/SignUp";
+import FileUpload from "./Common/FileUpload"
+import Home from "./Common/Home";
 function App() {
   return (
     <div>
@@ -22,7 +24,8 @@ function App() {
         <Route exact path="/signup" component={SignUp} />
         
         <Route exact path="/" component={QuesSet} />
-        
+        <Route exact path="/file" component={FileUpload} />
+        <Route exact path="/home" component={Home} />
         <Route exact path="/list" component={ListQues} />
         <Route exact path="/addques" component={AddQues} />
         <Route exact path="/update-ques/:id" component={Updateques} />
