@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { useState } from "react";
 import { useTable, useFilters, useGlobalFilter } from "react-table";
-import Service from "../Services/Service";
+import Service from "../services/Service";
 import { RiDeleteBinLine, RiAddFill } from "react-icons/ri";
 import { MdLibraryAdd } from "react-icons/md";
 import {} from "react-icons/io";

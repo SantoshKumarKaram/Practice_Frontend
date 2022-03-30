@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Service from "../Services/Service";
+import Service from "../services/Service";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { setErrors } from "../Common/setErrors";
-import { Alert } from "bootstrap/dist/js/bootstrap.bundle";
+import { setErrors } from "../Components/setErrors";
+
 const required = (value) => {
   if ((value = "")) {
     return (
@@ -13,6 +13,7 @@ const required = (value) => {
     );
   }
 };
+
 export default class AddQues extends Component {
   constructor(props) {
     super(props);
@@ -56,13 +57,14 @@ export default class AddQues extends Component {
       difficulty: this.state.difficulty,
     };
     console.log("quesbank =>" + JSON.stringify(quesbank));
+
     //  if(this.validate(question,number,language,difficulty,answer,hint)){
 
     //  }
 
     Service.createQues(quesbank)
       .then((res) => {
-        <Alert severity="success">This is a success alert — check it out!</Alert>
+        
         this.props.history.push("/list");
       })
       .catch((res) => {

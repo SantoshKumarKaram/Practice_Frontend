@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import Service from "../Services/Service";
+import Service from "../services/Service";
 export default class Mcq extends Component {
   constructor(props) {
     super(props);

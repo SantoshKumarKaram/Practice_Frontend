@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@restart/ui/esm/Button";
-import Navbar from "../Common/Navbar";
+import Navbar from '../Components/Navbar';
 function QuesSet() {
   return (
     <>
