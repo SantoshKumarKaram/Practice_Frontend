@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import Service from "../Services/Service";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { setErrors } from "../Common/setErrors";
-import { Alert } from "bootstrap/dist/js/bootstrap.bundle";
+
 const required = (value) => {
   if ((value = "")) {
     return (
@@ -13,40 +12,42 @@ const required = (value) => {
     );
   }
 };
-export default class AddQues extends Component {
+
+export default class Updateques extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      id: this.props.match.params.id,
       question: "",
       language: "",
       difficulty: "",
       answer: "",
       hint: "",
     };
-
     this.changeAnswerHandler = this.changeAnswerHandler.bind(this);
     this.changeQuestionHandler = this.changeQuestionHandler.bind(this);
     this.changeLanguageHandler = this.changeLanguageHandler.bind(this);
     this.changeDifficultyHandler = this.changeDifficultyHandler.bind(this);
     this.changeHintHandler = this.changeHintHandler.bind(this);
-    this.saveQuestion = this.saveQuestion.bind(this);
+
+    this.updateQues = this.updateQues.bind(this);
   }
 
-  // validate = (question, number, language, difficulty, answer, hint) => {
-  //   const errors = setErrors(
-  //     question,
-  //     number,
-  //     language,
-  //     difficulty,
-  //     answer,
-  //     hint
-  //   );
-  //   this.setState({ errors: errors });
-  //   return Object.values(errors).every((err) => err === "");
-  // };
+  componentDidMount() {
+    Service.getQuesById(this.state.id).then((res) => {
+      let quesbank = res.data;
+      this.setState({
+        question: quesbank.question,
+        answer: quesbank.answer,
+        level: quesbank.level,
+        hint: quesbank.hint,
+        language: quesbank.language,
+      });
+    });
+  }
 
-  saveQuestion = (e) => {
+  updateQues = (e) => {
     e.preventDefault();
     let quesbank = {
       question: this.state.question,
@@ -56,19 +57,10 @@ export default class AddQues extends Component {
       difficulty: this.state.difficulty,
     };
     console.log("quesbank =>" + JSON.stringify(quesbank));
-    //  if(this.validate(question,number,language,difficulty,answer,hint)){
-
-    //  }
-
-    Service.createQues(quesbank)
-      .then((res) => {
-        <Alert severity="success">This is a success alert — check it out!</Alert>
-        this.props.history.push("/list");
-      })
-      .catch((res) => {
-        alert(res.message);
-      });
-    // .catch(alert("fiels most be field"));
+    console.log("id =>" + JSON.stringify(this.state.id));
+    Service.updateques(quesbank, this.state.id).then((res) => {
+      this.props.history.push("/list");
+    });
   };
 
   changeAnswerHandler(event) {
@@ -94,40 +86,39 @@ export default class AddQues extends Component {
   cancel() {
     this.props.history.push("/list");
   }
-
   render() {
     return (
       <>
         <div className="container">
           <div
             className="card col-sm-6 pt-6 offset-md-3 card-border-primary
-          shadow p-2 mb-3 bg-white rounded "
+        shadow p-2 mb-3 bg-white rounded "
           >
-            <h5 className="card-header">Add Question</h5>
+            <h5 className="card-header">Update Question</h5>
 
             <form className="form-control ">
               {/* <div class="col-md-4 ">
-                <label for="Question number" class="form-label ">
-                  Question Number :-
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  value={this.state.number}
-                  onChange={this.changeQuestionNoHandler}
-                   
-                />
-                {/* {this.state.errors.question && (
-                    <div className ="text-danger">
-                      {this.state.errors.title}
-                    </div>
-                  )} */}
+              <label for="Question number" class="form-label ">
+                Question Number :-
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                value={this.state.number}
+                onChange={this.changeQuestionNoHandler}
+                 
+              />
               {/* {this.state.errors.question && (
-                  <div className= "text-danger">{this.state.errors.question} </div>
+                  <div className ="text-danger">
+                    {this.state.errors.title}
+                  </div>
                 )} */}
+              {/* {this.state.errors.question && (
+                <div className= "text-danger">{this.state.errors.question} </div>
+              )} */}
               {/* </div> */}
 
-              <div className="from-group-floating row ">
+              <div className="from-group row ">
                 <div class="col-md-4">
                   <label class="form-label">Language :-</label>
 
@@ -208,7 +199,7 @@ export default class AddQues extends Component {
                 style={{ marginTop: "10px" }}
                 type="button"
                 class="btn btn-primary"
-                onClick={this.saveQuestion}
+                onClick={this.updateQues}
               >
                 Save
               </button>
