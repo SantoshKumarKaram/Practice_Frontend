@@ -4,7 +4,7 @@ export default class Home extends Component {
   render() {
     return (
       <>
-<Navbar/> 
+
       
       <div className='row'>
       <div className="container">
@@ -16,7 +16,7 @@ export default class Home extends Component {
             <p> Here you can add Questions.</p>
           </div>
           
-          <a class="btn btn-outline-primary" href="/" role="button">HERE</a>
+          <a class="btn btn-outline-primary" href="/queset" role="button">ADD</a>
 
         </div>
 
@@ -30,7 +30,7 @@ export default class Home extends Component {
             <p> Here you can add Assignment for Students.</p>
           </div>
           
-          <a class="btn btn-outline-primary" href="/file" role="button">HERE</a>
+          <a class="btn btn-outline-primary" href="/file" role="button">ADD</a>
 
         </div>
 

@@ -5,26 +5,23 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
-.navbar{
-  background-color:#4ab8e4;
-}
 
-.navbar-brand{
-  font-size: 1.9rem !important;
-  color: #111010f5 !important;
-}
 
-.navbar a{
-  font-size: 1.3rem;
-  text-transform: capitalize;
-}
 
+.navhead{
+  position: relative;
+  left: 2rem;
+}
 .menu_active{
   font-weight: bold;
   border-bottom: 1px solid #000000;
 }
 .navbar a:hover{
-  color: #e9ebec !important;
+  color: #009ceb !important;
+}
+.nav-link{
+  position: relative;
+  left: 82rem;
 }
 
 @media (max-width: 991px){

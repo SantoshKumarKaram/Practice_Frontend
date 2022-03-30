@@ -15,6 +15,9 @@ import Input from "react-validation/build/input";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import CheckButton from "react-validation/build/button";
+import Button from '@mui/material/Button';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
 import "../index.css";
 import { Row, Col, Container } from "react-bootstrap";
 import { login } from "../actions/auth";
@@ -147,15 +150,25 @@ const Login = (props) => {
                         </div>
 
                         <div className="form-group">
-                          <button
-                            className="btn btn-primary btn-block"
-                            disabled={loading}
-                          >
-                            {loading && (
+                        <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              disabled={loading}
+            >  {loading && (
                               <span className="spinner-border spinner-border-sm"></span>
                             )}
-                            <span>Login</span>
-                          </button>
+              LOG IN
+            </Button>
+            <Grid container justifyContent="flex-end">
+              <Grid item>
+                <Link href="register" variant="body2">
+                  Don't have an account? Sign up
+                </Link>
+              </Grid>
+            </Grid>
+                         
                         </div>
 
                         {message && (

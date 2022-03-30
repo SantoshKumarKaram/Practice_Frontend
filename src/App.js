@@ -67,24 +67,24 @@ const App = () => {
   return (
     <Router history={history}>
       <div>
-        <nav className="navbar navbar-expand navbar-dark text-warning shadow ">
-          CUTM
+        <nav className="navbar navbar-expand  navbar-dark text-warning shadow ">
+    <div className="navhead">CUTM</div> 
 
 
           {currentUser ? (
-            <div className="navbar-nav ml-auto ">
+            <div className="navbar-nav text-dark ">
               <li className="nav-item">
-                <Link to={"/Main"} className="nav-link text-light">
+                <Link to={"/home"} className="nav-link text-dark">
                   Home
                 </Link>
               </li>
               <li className="nav-item ">
-                <Link to={"/profile"} className="nav-link  text-light ">
+                <Link to={"/profile"} className="nav-link  text-dark ">
                   {currentUser.username}
                 </Link>
               </li>
               <li className="nav-item">
-                <a href="/login" className="nav-link text-light" onClick={logOut}>
+                <a href="/login" className="nav-link text-dark" onClick={logOut}>
                 <FiLogOut/>
                 </a>
               </li>
@@ -92,13 +92,13 @@ const App = () => {
           ) : (
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link to={"/login"}  className="nav-link  text-light">
+                <Link to={"/login"}  className="nav-link  text-dark">
                   Login
                 </Link>
               </li>
 
               <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
+                <Link to={"/register"} className="nav-link text-dark">
                   Sign Up
                 </Link>
               </li>

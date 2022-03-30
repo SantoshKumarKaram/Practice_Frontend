@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import UploadService from "../services/FileUploadService";
+import Button from '@mui/material/Button';
 
 const UploadFiles = () => {
   const [selectedFiles, setSelectedFiles] = useState(undefined);
@@ -46,11 +47,13 @@ const UploadFiles = () => {
   return (
 
              
+<>
+<div className="container">
+        <div class="card col-md-6 pt-6 offset-md-3 card-border-primary shadow p-2 mb-2 bg-white rounded">
+          <h5 class="card-header">FILE UPLOADER</h5>
+          <p>Click on Choose file to add Assignment for Students.</p>
 
-
-    <div className="container-fluid">
-      <div className="card col-md-4 pt-6 offset-md-3 card-border-primary shadow p-2 mb-2 bg-white rounded ">
-      {currentFile && (
+          {currentFile && (
         <div className="progress">
           <div
             className="progress-bar progress-bar-info progress-bar-striped"
@@ -64,22 +67,28 @@ const UploadFiles = () => {
           </div>
         </div>
       )}
-
       <label className="btn btn-default">
         <input type="file" onChange={selectFile} />
       </label>
 
-      <button 
-        className="btn btn-warning"
-        disabled={!selectedFiles}
+     
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+          </div>
+          <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              disabled={!selectedFiles}
         onClick={upload}
-      >
-        Upload
-      </button>
+            > 
+UPLOAD            </Button>
+          
+          
 
-      </div>
-      
-      <div className="alert alert-light" role="alert">
+        </div>
+        <div className="alert alert-light" role="alert">
         {message}
       </div>
 
@@ -94,7 +103,9 @@ const UploadFiles = () => {
             ))}
         </ul>
       </div>
-    </div>
+      </div> 
+    
+    </>
   );
 };
 

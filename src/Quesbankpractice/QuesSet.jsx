@@ -4,7 +4,7 @@ import Navbar from '../Components/Navbar';
 function QuesSet() {
   return (
     <>
-    <Navbar /> 
+   
       <div className="container">
         <div class="card col-md-6 pt-6 offset-md-3 card-border-primary shadow p-2 mb-2 bg-white rounded">
           <h5 class="card-header">Welcome</h5>

@@ -4,11 +4,13 @@ import { MdArrowBackIosNew } from "react-icons/md";
 // import Log from "../IMG/Signup.gif";
 import Box from "@mui/material/Box";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Button from '@mui/material/Button';
 
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import TextField from "@mui/material/TextField";
-
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 import { Row, Col, Container } from "react-bootstrap";
@@ -154,26 +156,7 @@ const Register = () => {
                       autoComplete="current-username"
                     />
                   </div>
-                  <div className="">
-                    <label htmlFor="user">
-                      {" "}
-                      <RiLockPasswordLine /> Password
-                    </label>
-                    <TextField
-                      margin="normal"
-                      required
-                      fullWidth
-                      label="password"
-                      type="password"
-                      className="form-control"
-                      name="password"
-                      value={password}
-                      onChange={onChangePassword}
-                      validations={[required, vpassword]}
-                      autoComplete="current-username"
-                    />
-                  </div>
-                      
+                                      
                   <div className="">
                     <label htmlFor="email">
                       {" "}
@@ -214,11 +197,21 @@ const Register = () => {
                   </div>
                 
 
-                  <div className="form-group">
-                    <button className="btn btn-primary btn-block">
-                      Sign Up
-                    </button>
-                  </div>
+                  <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign Up
+            </Button>
+            <Grid container justifyContent="flex-end">
+              <Grid item>
+                <Link href="login" variant="body2">
+                  Already have an account? Sign in
+                </Link>
+              </Grid>
+            </Grid>
                 </div>
               )}
 
